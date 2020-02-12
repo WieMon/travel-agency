@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
@@ -8,11 +8,16 @@ import MainLayout from './components/layout/MainLayout/MainLayout';
 import Home from './components/views/Home/Home';
 import Trips from './components/views/Trips/TripsContainer';
 // TODO - import other views
-import Info from './components/views/Info/Info';
+import Trip from './components/views/Trip/TripContainer';
+import Countries from './components/views/Countries/CountriesContainer';
+import Country from './components/views/Country/CountryContainer';
+import Regions from './components/views/Regions/RegionsContainer';
+import Info from './components/views/Info/Info';                  //dlaczego Info a nie InfoContainer?
 import NotFound from './components/views/NotFound/NotFound';
 
 import parseTrips from './utils/parseTrips';
 import {setMultipleStates} from './redux/globalRedux';
+import {AnimatedSwitch} from 'react-router-transition';
 
 class App extends React.Component {
   static propTypes = {
@@ -37,13 +42,21 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <MainLayout>
-          <Switch location={location}>
+          <AnimatedSwitch location={location}
+            atEnter={{ opacity: 0 }}
+            atLeave={{ opacity: 0 }}
+            atActive={{ opacity: 1 }}
+            className="switch-wrapper">
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
             {/* TODO - add more routes for other views */}
+            <Route exact path='/trip/:id' component={Trip} />
+            <Route exact path='/countries' component={Countries} />
+            <Route exact path='/country/:id' component={Country} />
+            <Route exact path='/regions' component={Regions} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
-          </Switch>
+          </AnimatedSwitch>
         </MainLayout>
       </BrowserRouter>
     );
