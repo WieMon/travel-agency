@@ -14,8 +14,8 @@ const OrderForm = (props) => (
 );
 
 OrderForm.propTypes = {
-  tripCost: PropTypes.node,
-  options: PropTypes.node,
+  tripCost: PropTypes.string,
+  options: PropTypes.object,
 };
 
 export default OrderForm;
