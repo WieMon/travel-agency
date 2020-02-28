@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 class OrderOptionDate extends React.Component {
 
-
   render() {
     const {currentValue, setOptionValue} = this.props;
 
