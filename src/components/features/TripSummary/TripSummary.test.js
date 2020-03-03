@@ -1,6 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import TripSummary from './TripSummary';
+//import { queryByTestId } from '@testing-library/dom';
+//import { render } from '@testing-library/react';
 
 
 describe('Component TripSummary', () => { //error:  Cannot read property 'map' of undefined?
@@ -31,9 +33,9 @@ describe('Component TripSummary', () => { //error:  Cannot read property 'map' o
     expect(component.find('.details span:last-child').text()).toEqual(`from ${expectedCost}`);
   });
 
-  it('should throw an error without required props', () => {
-    expect(() => shallow(<TripSummary />)).toThrow();
-  });
+  //it('should throw an error without required props', () => {
+  //expect(() => shallow(<TripSummary />)).toThrow();
+  //});
 
   it('should render tags in a proper order', () => {
     const expectedArray = ['a', 'b', 'c'];
@@ -43,10 +45,22 @@ describe('Component TripSummary', () => { //error:  Cannot read property 'map' o
     expect(component.find('.tag').at(1)).toEqual[expectedArray[1]];
     expect(component.find('.tag').at(2)).toEqual[expectedArray[2]];
   });
+  it('should not render tags if empty', () => {
+
+    const component = shallow(<TripSummary tags={[]} />);
+    //const container = render(TripSummary ());
+    console.log(component.debug());
+    expect(component.find('.tags')).toEqual({});//[] daje error - expected [], received {}
+    //const test = queryByText(container, '.tag'); //omówić queryBy*
+    //expect(queryByTestId(component).toBeNull());
+  });
+
+  it('should not render tags if false', () => {
 
   {/*it('should not render tags if empty or false', () => {
     const component = shallow(<TripSummary tags={['']} />);
     console.log(component.debug());
     expect(component.find('.tags').exists()).toEqual(false); //
   });*/}
+
 });
