@@ -28,7 +28,6 @@ const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
         <OptionComponent
           setOptionValue={value => setOrderOption({[id]: value})}
           {...otherProps}
-
         />
       </div>
     );

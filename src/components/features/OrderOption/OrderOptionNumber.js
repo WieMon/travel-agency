@@ -15,7 +15,9 @@ const OrderOptionNumber =({currentValue, limits, setOptionValue, price}) => (
       onChange={event => setOptionValue(event.currentTarget.value)}
     />
     ({formatPrice(price)})
+
   </div>
+
 );
 
 OrderOptionNumber.propTypes = {

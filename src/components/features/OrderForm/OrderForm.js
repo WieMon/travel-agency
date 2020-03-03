@@ -42,18 +42,18 @@ const sendOrder = (options, tripCost, tripId, tripName, countryCode) => {
   } else window.alert ('Please provide your name and contact information');
 };
 
-const OrderForm = (props) => (
+const OrderForm = ({options, setOrderOption, tripCost, tripId, tripName, countryCode}) => (
 
   <Row>
     {pricing.map(options =>
       <Col md={4} key={options.id}>
-        <OrderOption {...options} currentValue={options[props.options.id]} setOrderOption={props.setOrderOption}/>
+        <OrderOption {...options} currentValue={options[options.id]} setOrderOption={setOrderOption}/>
 
       </Col>
     )}
     <Col xs={12}>
-      <OrderSummary cost={props.tripCost} options={props.options} />
-      <Button onClick={() => sendOrder(props.options, props.tripCost, props.tripId, props.tripName, props.countryCode)}>Order now!</Button>
+      <OrderSummary cost={tripCost} options={options} />
+      <Button onClick={() => sendOrder(options, tripCost, tripId, tripName, countryCode)}>Order now!</Button>
     </Col>
   </Row>
 );
