@@ -45,9 +45,9 @@ const sendOrder = (options, tripCost, tripId, tripName, countryCode) => {
 const OrderForm = (props) => (
 
   <Row>
-    {pricing.map(options =>
-      <Col md={4} key={options.id}>
-        <OrderOption {...options} currentValue={props.options[options.id]} setOrderOption={props.setOrderOption}/>
+    {pricing.map(option =>
+      <Col md={4} key={option.id}>
+        <OrderOption {...option} currentValue={props.options[option.id]} setOrderOption={props.setOrderOption}/>
 
       </Col>
     )}
